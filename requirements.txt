@@ -1,0 +1,8 @@
+faster-whisper
+sounddevice
+scipy
+resampy
+fastapi
+uvicorn
+numpy
+jinja2

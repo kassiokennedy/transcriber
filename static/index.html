@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transcrição em Tempo Real</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      #output {
+        white-space: pre-line;
+        border: 1px solid #ccc;
+        padding: 10px;
+        height: 300px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🗣️ Transcrição em Tempo Real</h1>
+    <div id="output"></div>
+
+    <script>
+      const output = document.getElementById("output");
+      const ws = new WebSocket("ws://" + location.host + "/ws");
+
+      ws.onmessage = (event) => {
+        const p = document.createElement("div");
+        p.textContent = event.data;
+        output.appendChild(p);
+        output.scrollTop = output.scrollHeight;
+      };
+    </script>
+  </body>
+</html>
